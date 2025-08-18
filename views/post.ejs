@@ -1,0 +1,45 @@
+<%- include('layouts/layout', { body: ` %>
+    <article class="single-post">
+        <header class="post-header">
+            <h2><%= post.title %></h2>
+            <div class="post-meta">
+                <span class="author">By <%= post.author %></span>
+                <span class="date"><%= new Date(post.date).toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                }) %></span>
+            </div>
+        </header>
+
+        <div class="post-content">
+            <p><%= post.content %></p>
+            
+            <%# You can add more complex content processing here %>
+            <% if (post.content.length > 200) { %>
+                <p><em>This is a longer article with more detailed content...</em></p>
+            <% } %>
+        </div>
+
+        <footer class="post-footer">
+            <p>
+                <a href="/">&larr; Back to all posts</a>
+            </p>
+            
+            <div class="post-navigation">
+                <% const currentIndex = posts.findIndex(p => p.id === post.id); %>
+                <% if (currentIndex > 0) { %>
+                    <a href="/post/<%= posts[currentIndex - 1].id %>" class="prev-post">
+                        &larr; Previous: <%= posts[currentIndex - 1].title %>
+                    </a>
+                <% } %>
+                
+                <% if (currentIndex < posts.length - 1) { %>
+                    <a href="/post/<%= posts[currentIndex + 1].id %>" class="next-post">
+                        Next: <%= posts[currentIndex + 1].title %> &rarr;
+                    </a>
+                <% } %>
+            </div>
+        </footer>
+    </article>
+` }) %>
