@@ -39,7 +39,7 @@ const posts = [
 const siteInfo = {
     title: "My EJS Blog",
     description: "A simple blog built with Express and EJS",
-    author: "Your Name"
+    author: "Vibhas Chhabra"
 };
 
 // Routes
